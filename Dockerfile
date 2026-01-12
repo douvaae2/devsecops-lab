@@ -1,6 +1,7 @@
-FROM python:3.9
+FROM python:3.9-slim
 WORKDIR /app
-COPY ../api .
-RUN pip install flask
+COPY ./api /app/api
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
 EXPOSE 5000
-CMD [&quot;python&quot;, &quot;app.py&quot;]
+CMD ["python", "api/app.py"]
